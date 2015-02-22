@@ -1,5 +1,6 @@
 package com.evanlennick.spellcheck.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -7,6 +8,10 @@ import java.util.List;
  */
 public class SpellcheckSuggestions {
     private List<SpellcheckSuggestion> suggestions;
+
+    public SpellcheckSuggestions() {
+        this.suggestions = new ArrayList<SpellcheckSuggestion>();
+    }
 
     public SpellcheckSuggestions(List<SpellcheckSuggestion> suggestions) {
         this.suggestions = suggestions;
@@ -18,5 +23,9 @@ public class SpellcheckSuggestions {
 
     public void setSuggestions(List<SpellcheckSuggestion> suggestions) {
         this.suggestions = suggestions;
+    }
+
+    public void add(SpellcheckSuggestion suggestion) {
+        this.suggestions.add(suggestion);
     }
 }
