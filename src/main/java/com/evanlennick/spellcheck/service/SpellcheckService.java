@@ -1,7 +1,7 @@
 package com.evanlennick.spellcheck.service;
 
-import com.atlascopco.hunspell.Hunspell;
 import com.evanlennick.spellcheck.model.SpellcheckSuggestions;
+import dk.dren.hunspell.Hunspell;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
@@ -12,11 +12,12 @@ import org.springframework.stereotype.Service;
 @Scope("singleton")
 public class SpellcheckService {
 
-    private Hunspell speller;
-
     public SpellcheckService() {
-        speller = new Hunspell("/Users/evan.lennick/Development/hunspell-test/dict/en_US.dic",
-                                        "/Users/evan.lennick/Development/hunspell-test/dict/en_US.aff");
+        try {
+            Hunspell.getInstance().getDictionary("/Users/evan.lennick/Development/hunspell-test/dict/en_US/en_US");
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public SpellcheckSuggestions getSpellcheckSuggestions(String[] wordsToCheck) {
